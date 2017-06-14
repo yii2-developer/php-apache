@@ -93,6 +93,5 @@ RUN ls -l /etc/apache2/conf-available/ \
     && a2enmod rewrite expires
 
 EXPOSE 80
-EXPOSE 443
 
 CMD ["apache2-foreground"]
