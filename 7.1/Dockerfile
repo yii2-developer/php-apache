@@ -83,7 +83,7 @@ RUN apt-get update \
 
 COPY docker-php7.conf /etc/apache2/conf-available/
 
-RUN \
+RUN ls -l /etc/apache2/conf-available/ \
     && sed -i 's#DocumentRoot.*#DocumentRoot /var/www/html/web#' /etc/apache2/sites-available/000-default.conf \
     && sed -i 's/^#AddDefault/AddDefault/' /etc/apache2/conf-available/charset.conf \
     && sed -i 's/ServerTokens OS/ServerTokens Prod/' /etc/apache2/conf-available/security.conf \
