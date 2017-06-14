@@ -90,8 +90,9 @@ RUN ls -l /etc/apache2/conf-available/ \
     && sed -i 's/ServerSignature On/ServerSignature Off/' /etc/apache2/conf-available/security.conf \
     && a2disconf docker-php \
     && a2enconf docker-php7 \
-    && a2enmod rewrite
+    && a2enmod rewrite expires
 
-EXPOSE 9000
+EXPOSE 80
+EXPOSE 443
 
 CMD ["apache2-foreground"]
