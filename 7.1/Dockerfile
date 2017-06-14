@@ -81,7 +81,7 @@ RUN apt-get update \
 
     && apt-get clean && apt-get autoclean && apt-get autoremove --purge -y
 
-COPY docker-yii2-php.conf /etc/apache2/conf-available/
+COPY docker-php7.conf /etc/apache2/conf-available/
 
 RUN \
     && sed -i 's#DocumentRoot.*#DocumentRoot /var/www/html/web#' /etc/apache2/sites-available/000-default.conf \
@@ -89,7 +89,7 @@ RUN \
     && sed -i 's/ServerTokens OS/ServerTokens Prod/' /etc/apache2/conf-available/security.conf \
     && sed -i 's/ServerSignature On/ServerSignature Off/' /etc/apache2/conf-available/security.conf \
     && a2disconf docker-php \
-    && a2enconf docker-yii2-php \
+    && a2enconf docker-php7 \
     && a2enmod rewrite
 
 EXPOSE 9000
