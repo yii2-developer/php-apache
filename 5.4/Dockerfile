@@ -73,8 +73,8 @@ RUN apt-get update \
     && docker-php-ext-install zip \
     && docker-php-ext-enable zip \
 
-    && docker-php-ext-install opcache \
-    && docker-php-ext-enable opcache \
+    && pecl install apc \
+    && docker-php-ext-enable apc \
 
     && docker-php-ext-install pcntl \
     && docker-php-ext-enable pcntl \
