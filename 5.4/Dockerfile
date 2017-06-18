@@ -1,4 +1,4 @@
-FROM php:5.4-apache
+FROM nsign/php-docker:5.4-apache
 
 RUN apt-get update \
 
