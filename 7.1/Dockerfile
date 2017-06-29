@@ -81,7 +81,7 @@ RUN apt-get update \
 
     && apt-get clean && apt-get autoclean && apt-get autoremove --purge -y
 
-COPY docker-php7.conf /etc/apache2/conf-available/
+COPY ./apache/docker-php7.conf /etc/apache2/conf-available/
 
 RUN ls -l /etc/apache2/conf-available/ \
     && sed -i 's#DocumentRoot.*#DocumentRoot /var/www/html/web#' /etc/apache2/sites-available/000-default.conf \
@@ -94,4 +94,10 @@ RUN ls -l /etc/apache2/conf-available/ \
 
 EXPOSE 80
 
-CMD ["apache2-foreground"]
+COPY ./init.sh /init.sh
+RUN chmod +x /init.sh
+
+COPY ./supervisor/cron.conf /etc/supervisor/conf.d/cron.conf
+COPY ./supervisor/web-gui.conf /etc/supervisor/conf.d/web-gui.conf
+
+CMD ["/init.sh"]
