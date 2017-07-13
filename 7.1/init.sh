@@ -7,7 +7,8 @@ USER_ID=${APACHE_RUN_ID:-33}
 if [ -n "$APACHE_RUN_USER" ]
 then
     if ! id "$APACHE_RUN_USER" >/dev/null 2>&1; then
-            useradd --shell=/bin/bash --home-dir="/var/www" --uid="$USER_ID" --user-group --non-unique "$APACHE_RUN_USER"
+        groupadd --gid="$USER_ID" --non-unique "$APACHE_RUN_USER"
+        useradd --shell=/bin/bash --home-dir="/var/www" --uid="$USER_ID" --gid="$USER_ID" --non-unique "$APACHE_RUN_USER"
     fi
 
     CRON_FILE="/root/cron/tabs"
