@@ -79,6 +79,10 @@ RUN apt-get update \
     && docker-php-ext-install pcntl \
     && docker-php-ext-enable pcntl \
 
+    && apt-get install -y --no-install-recommends libldap2-dev \
+    && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
+    && docker-php-ext-install ldap \
+
     && apt-get clean && apt-get autoclean && apt-get autoremove --purge -y
 
 COPY ./apache/docker-php7.conf /etc/apache2/conf-available/
