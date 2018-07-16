@@ -13,7 +13,7 @@ then
 
     if [ -z "$CRON_FILE" ]
     then
-        CRON_FILE="/var/local/cron"
+        CRON_FILE="/root/cron/tabs"
     fi
 
     if [ -f "$CRON_FILE" ]
