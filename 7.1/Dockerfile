@@ -1,4 +1,4 @@
-FROM 7.1-apache-jessie
+FROM php:7.1-apache-jessie
 
 RUN apt-get update \
 
