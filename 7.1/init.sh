@@ -22,4 +22,6 @@ then
     fi
 fi
 
+su --command="supervisord -c /etc/supervisor/application.conf" "$APACHE_RUN_USER"
+
 apache2-foreground

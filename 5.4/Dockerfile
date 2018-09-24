@@ -103,5 +103,6 @@ RUN chmod +x /init.sh
 
 COPY ./supervisor/cron.conf /etc/supervisor/conf.d/cron.conf
 COPY ./supervisor/web-gui.conf /etc/supervisor/conf.d/web-gui.conf
+COPY ./supervisor/application.conf /etc/supervisor/application.conf
 
 CMD ["/init.sh"]
