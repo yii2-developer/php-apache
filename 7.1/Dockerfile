@@ -2,7 +2,7 @@ FROM php:7.1-apache-jessie
 
 RUN apt-get update \
 
-    && apt-get install -y --no-install-recommends nano mc wget openssl git sshpass cron supervisor sendmail \
+    && apt-get install -y --no-install-recommends nano mc wget openssl git sshpass cron supervisor sendmail unzip \
 
     && docker-php-ext-install bcmath \
     && docker-php-ext-enable bcmath \
