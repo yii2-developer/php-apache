@@ -42,9 +42,9 @@ RUN apt-get update \
     && docker-php-ext-install mbstring \
     && docker-php-ext-enable mbstring \
 
-    && apt-get install -y --no-install-recommends libmcrypt-dev \
-    && docker-php-ext-install mcrypt \
-    && docker-php-ext-enable mcrypt \
+    && apt-get install -y --no-install-recommends libcurl4-openssl-dev \
+    && docker-php-ext-install openssl \
+    && docker-php-ext-enable openssl \
 
     && docker-php-ext-install pdo \
     && docker-php-ext-enable pdo \
