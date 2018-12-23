@@ -61,7 +61,7 @@ RUN apt-get update \
     && docker-php-ext-install xml \
     && docker-php-ext-enable xml \
 
-    && apt-get install -y --no-install-recommends libxslt1-dev \
+    && apt-get install -y --no-install-recommends libzip-dev libxslt1-dev \
     && docker-php-ext-install xsl \
     && docker-php-ext-enable xsl \
 

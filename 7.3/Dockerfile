@@ -65,7 +65,7 @@ RUN apt-get update \
     && docker-php-ext-install xsl \
     && docker-php-ext-enable xsl \
 
-    && apt-get install -y --no-install-recommends zlib1g-dev \
+    && apt-get install -y --no-install-recommends libzip-dev zlib1g-dev \
     && docker-php-ext-install zip \
     && docker-php-ext-enable zip \
 
