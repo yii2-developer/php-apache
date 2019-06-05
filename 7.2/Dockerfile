@@ -2,7 +2,7 @@ FROM php:7.2-apache
 
 RUN apt-get update \
 
-    && apt-get install -y --no-install-recommends nano mc wget openssl git sshpass cron supervisor sendmail unzip \
+    && apt-get install -y --no-install-recommends nano mc wget openssl git sshpass cron supervisor sendmail unzip dnsutils iproute2 \
 
     && docker-php-ext-install bcmath \
     && docker-php-ext-enable bcmath \
