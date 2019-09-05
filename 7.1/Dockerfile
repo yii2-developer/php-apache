@@ -99,9 +99,10 @@ RUN ls -l /etc/apache2/conf-available/ \
 EXPOSE 80
 
 COPY ./docker-entrypoint/ /docker-entrypoint/
+COPY ./init.sh /init.sh
 
 RUN chmod +x /docker-entrypoint/resolve-docker-host-ip.sh
-RUN chmod +x /docker-entrypoint/init.sh
+RUN chmod +x /init.sh
 
 COPY ./supervisor/cron.conf /etc/supervisor/conf.d/cron.conf
 COPY ./supervisor/web-gui.conf /etc/supervisor/conf.d/web-gui.conf
@@ -109,4 +110,4 @@ COPY ./supervisor/application.conf /etc/supervisor/application.conf
 
 ENTRYPOINT ["/docker-entrypoint/resolve-docker-host-ip.sh", "docker-php-entrypoint"]
 
-CMD ["/docker-entrypoint/init.sh"]
+CMD ["/init.sh"]
