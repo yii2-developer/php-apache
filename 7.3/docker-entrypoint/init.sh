@@ -11,11 +11,6 @@ then
         useradd --shell=/bin/bash --home-dir="/var/www" --uid="$USER_ID" --gid="$USER_ID" --non-unique "$APACHE_RUN_USER"
     fi
 
-    if [ -z "$CRON_FILE" ]
-    then
-        CRON_FILE="/var/spool/cron/config/crontab"
-    fi
-
     if [ -f "$CRON_FILE" ]
     then
         crontab -u "$APACHE_RUN_USER" "$CRON_FILE"
