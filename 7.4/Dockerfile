@@ -26,8 +26,8 @@ RUN apt-get update \
     && docker-php-ext-install gd \
     && docker-php-ext-enable gd \
 
-    && docker-php-ext-install hash \
-    && docker-php-ext-enable hash \
+    # && docker-php-ext-install hash \
+    # && docker-php-ext-enable hash \
 
     && docker-php-ext-install iconv \
     && docker-php-ext-enable iconv \
@@ -75,9 +75,21 @@ RUN apt-get update \
     && docker-php-ext-install pcntl \
     && docker-php-ext-enable pcntl \
 
+    && docker-php-ext-install exif \
+    && docker-php-ext-enable exif \
+
     && apt-get install -y --no-install-recommends libldap2-dev \
     && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
     && docker-php-ext-install ldap \
+    && docker-php-ext-enable ldap \
+
+    && apt-get install -y --no-install-recommends openssl libssl-dev libcurl4-openssl-dev \
+    && pecl install mongodb \
+    && docker-php-ext-enable mongodb \
+
+    && apt-get install -y --no-install-recommends default-mysql-client \
+    && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-enable pdo_mysql \
 
     && apt-get clean && apt-get autoclean && apt-get autoremove --purge -y
 
