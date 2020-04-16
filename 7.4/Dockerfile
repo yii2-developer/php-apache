@@ -7,8 +7,8 @@ RUN apt-get update \
     && docker-php-ext-install bcmath \
     && docker-php-ext-enable bcmath \
 
-    && apt-get install -y --no-install-recommends libpng-dev libjpeg-dev libfreetype6-dev libgd-dev \
-    && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
+    && apt-get install -y --no-install-recommends libpng-dev libjpeg-dev libwebp-dev libfreetype6-dev libgd-dev \
+    && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ --with-webp=/usr/include/ \
     && docker-php-ext-install gd \
     && docker-php-ext-enable gd \
 
