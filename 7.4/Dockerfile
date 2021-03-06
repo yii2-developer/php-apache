@@ -90,6 +90,4 @@ COPY ./supervisor/cron.conf /etc/supervisor/conf.d/cron.conf
 COPY ./supervisor/web-gui.conf /etc/supervisor/conf.d/web-gui.conf
 COPY ./supervisor/application.conf /etc/supervisor/application.conf
 
-ENTRYPOINT ["/docker-entrypoint/resolve-docker-host-ip.sh", "docker-php-entrypoint"]
-
-CMD ["/docker-entrypoint/init.sh"]
+CMD ["/docker-entrypoint/resolve-docker-host-ip.sh", "/docker-entrypoint/init.sh", "apache2-foreground"]

@@ -19,4 +19,4 @@ if [ -n "$APACHE_RUN_USER" ]; then
   su --command="supervisord --configuration /etc/supervisor/application.conf" "$APACHE_RUN_USER"
 fi
 
-apache2-foreground
+exec "$@"
