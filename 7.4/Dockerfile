@@ -79,8 +79,6 @@ RUN ls -l /etc/apache2/conf-available/ \
     && a2enconf docker-php7 \
     && a2enmod rewrite expires
 
-EXPOSE 80
-
 COPY ./docker-entrypoint/ /docker-entrypoint/
 
 RUN chmod +x /docker-entrypoint/resolve-docker-host-ip.sh
