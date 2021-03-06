@@ -4,11 +4,11 @@ set -e
 
 supervisord --configuration /etc/supervisor/supervisord.conf
 
-if [ -n "$APACHE_RUN_USER" ]; then
+if [ -n "$APACHE_RUN_USER" ] && [ -n "$APACHE_RUN_GROUP" ]; then
   if ! id "$APACHE_RUN_USER" >/dev/null 2>&1; then
     APACHE_RUN_ID=${APACHE_RUN_ID:-33}
 
-    groupadd --gid="$APACHE_RUN_ID" --non-unique "$APACHE_RUN_USER"
+    groupadd --gid="$APACHE_RUN_ID" --non-unique "$APACHE_RUN_GROUP"
     useradd --shell=/bin/bash --home-dir="/var/www" --uid="$APACHE_RUN_ID" --gid="$APACHE_RUN_ID" --non-unique "$APACHE_RUN_USER"
   fi
 
