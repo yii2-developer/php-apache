@@ -71,7 +71,7 @@ RUN apt-get update \
 COPY ./apache/docker-php7.conf /etc/apache2/conf-available/
 
 RUN ls -l /etc/apache2/conf-available/ \
-    && sed -i 's#DocumentRoot.*#DocumentRoot /var/www/html/public#' /etc/apache2/sites-available/000-default.conf \
+    && sed -i 's#DocumentRoot.*#DocumentRoot /var/www/html/project/public#' /etc/apache2/sites-available/000-default.conf \
     && sed -i 's/^#AddDefault/AddDefault/' /etc/apache2/conf-available/charset.conf \
     && sed -i 's/ServerTokens OS/ServerTokens Prod/' /etc/apache2/conf-available/security.conf \
     && sed -i 's/ServerSignature On/ServerSignature Off/' /etc/apache2/conf-available/security.conf \
