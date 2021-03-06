@@ -9,7 +9,7 @@ if [ -n "$APACHE_RUN_USER" ] && [ -n "$APACHE_RUN_GROUP" ]; then
     APACHE_RUN_ID=${APACHE_RUN_ID:-33}
 
     groupadd --gid="$APACHE_RUN_ID" --non-unique "$APACHE_RUN_GROUP"
-    useradd --shell=/bin/bash --home-dir="/var/www" --uid="$APACHE_RUN_ID" --gid="$APACHE_RUN_ID" --non-unique "$APACHE_RUN_USER"
+    useradd --shell=/bin/bash --home-dir="/var/www/html" --uid="$APACHE_RUN_ID" --gid="$APACHE_RUN_ID" --non-unique "$APACHE_RUN_USER"
   fi
 
   if [ -f "$CRON_FILE" ]; then
