@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+set -e
+
 supervisord --configuration /etc/supervisor/supervisord.conf
 
 USER_ID=${APACHE_RUN_ID:-33}
