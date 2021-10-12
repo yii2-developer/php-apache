@@ -54,14 +54,14 @@ RUN apt-get update \
     && docker-php-ext-enable pdo_mysql \
 
     && mkdir /opt/tmp && cd /opt/tmp \
-    && wget https://github.com/unicode-org/icu/releases/download/release-66-1/icu4c-66_1-src.tgz \
-    && tar zxvf icu4c-66_1-src.tgz \
+    && wget https://github.com/unicode-org/icu/releases/download/release-69-1/icu4c-69_1-src.tgz \
+    && tar zxvf icu4c-69_1-src.tgz \
     && cd icu/source \
-    && ./configure --prefix=/opt/icu661 && make && make install \
+    && ./configure --prefix=/opt/icu691 && make && make install \
     && rm -rf /opt/tmp \
 
-    && apt-get install -y --no-install-recommends libicu63 libicu-dev \
-    && export PKG_CONFIG_PATH="/opt/icu661/lib/pkgconfig" \
+    && apt-get install -y --no-install-recommends libicu67 libicu-dev \
+    && export PKG_CONFIG_PATH="/opt/icu691/lib/pkgconfig" \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl \
     && docker-php-ext-enable intl \
