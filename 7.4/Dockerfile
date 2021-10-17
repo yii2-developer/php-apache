@@ -61,7 +61,6 @@ RUN apt-get update \
     && rm -rf /opt/tmp \
 
     && apt-get install -y --no-install-recommends libicu67 libicu-dev \
-    && export PKG_CONFIG_PATH="/opt/icu691/lib/pkgconfig" \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl \
     && docker-php-ext-enable intl \
