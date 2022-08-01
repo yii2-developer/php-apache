@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -e
+
+APACHE_RUN_ID=${APACHE_RUN_ID:-33}
+APACHE_RUN_USER=${APACHE_RUN_USER:-"www-data"}
+APACHE_RUN_GROUP=${APACHE_RUN_GROUP:-"www-data"}
+
+if [ -x "$(command -v usermod)" ] ; then
+    usermod --uid="${APACHE_RUN_ID}" --shell="/bin/bash" --home="/var/www/html" "${APACHE_RUN_USER}"
+fi
+
+if [ -x "$(command -v groupmod)" ] ; then
+    groupmod --gid="${APACHE_RUN_ID}" "${APACHE_RUN_GROUP}"
+fi
+
+if [ -x "$(command -v supervisord)" ] ; then
+    supervisord --configuration /etc/supervisor/supervisord.conf
+    su --command="supervisord --configuration /etc/supervisor/application.conf" "$APACHE_RUN_USER"
+fi
+
+if [ -x "$(command -v crontab)" ] ; then
+    su --command="crontab $CRON_FILE" "$APACHE_RUN_USER"
+fi
+
+exec "$@"
