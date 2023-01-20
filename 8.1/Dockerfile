@@ -51,6 +51,10 @@ RUN apt-get update \
     && apt-get install --yes --no-install-recommends default-mysql-client \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-enable pdo_mysql \
+    # pdo_pgsql
+    && apt-get install --yes --no-install-recommends libpq-dev postgresql-client \
+    && docker-php-ext-install pdo_pgsql \
+    && docker-php-ext-enable pdo_pgsql \
     # icu
     && mkdir /opt/tmp && cd /opt/tmp \
     && wget https://github.com/unicode-org/icu/releases/download/release-71-1/icu4c-71_1-src.tgz \
