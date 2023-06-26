@@ -57,13 +57,13 @@ RUN apt-get update \
     && docker-php-ext-enable pdo_pgsql \
     # icu
     && mkdir /opt/tmp && cd /opt/tmp \
-    && wget https://github.com/unicode-org/icu/releases/download/release-71-1/icu4c-71_1-src.tgz \
-    && tar zxvf icu4c-71_1-src.tgz \
+    && wget https://github.com/unicode-org/icu/releases/download/release-72-1/icu4c-72_1-src.tgz \
+    && tar zxvf icu4c-72_1-src.tgz \
     && cd icu/source \
-    && ./configure --prefix=/opt/icu711 && make && make install \
+    && ./configure --prefix=/opt/icu721 && make && make install \
     && rm -rf /opt/tmp \
     # intl
-    && apt-get install --yes --no-install-recommends libicu67 libicu-dev \
+    && apt-get install --yes --no-install-recommends libicu72 libicu-dev \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl \
     && docker-php-ext-enable intl \
