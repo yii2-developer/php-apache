@@ -2,7 +2,7 @@ FROM php:7.1-apache
 
 RUN apt-get update \
 
-    && apt-get install -y --no-install-recommends nano mc wget openssl git sshpass cron supervisor sendmail unzip dnsutils iproute2 \
+    && apt-get install --yes --no-install-recommends nano mc wget openssl git sshpass cron supervisor sendmail unzip dnsutils iproute2 \
 
     && docker-php-ext-install bcmath \
     && docker-php-ext-enable bcmath \
@@ -10,18 +10,18 @@ RUN apt-get update \
     && docker-php-ext-install ctype \
     && docker-php-ext-enable ctype \
 
-    && apt-get install -y --no-install-recommends libcurl4-openssl-dev \
+    && apt-get install --yes --no-install-recommends libcurl4-openssl-dev \
     && docker-php-ext-install curl \
     && docker-php-ext-enable curl \
 
-    && apt-get install -y --no-install-recommends libxml2-dev \
+    && apt-get install --yes --no-install-recommends libxml2-dev \
     && docker-php-ext-install dom \
     && docker-php-ext-enable dom \
 
     && docker-php-ext-install fileinfo \
     && docker-php-ext-enable fileinfo \
 
-    && apt-get install -y --no-install-recommends libpng-dev libjpeg-dev libwebp-dev libfreetype6-dev libgd-dev \
+    && apt-get install --yes --no-install-recommends libpng-dev libjpeg-dev libwebp-dev libfreetype6-dev libgd-dev \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-webp-dir=/usr/include/ \
     && docker-php-ext-install gd \
     && docker-php-ext-enable gd \
@@ -32,7 +32,7 @@ RUN apt-get update \
     && docker-php-ext-install iconv \
     && docker-php-ext-enable iconv \
 
-    && apt-get install -y --no-install-recommends libmagickwand-dev \
+    && apt-get install --yes --no-install-recommends libmagickwand-dev \
     && pecl install imagick \
     && docker-php-ext-enable imagick \
 
@@ -42,7 +42,7 @@ RUN apt-get update \
     && docker-php-ext-install mbstring \
     && docker-php-ext-enable mbstring \
 
-    && apt-get install -y --no-install-recommends libmcrypt-dev \
+    && apt-get install --yes --no-install-recommends libmcrypt-dev \
     && docker-php-ext-install mcrypt \
     && docker-php-ext-enable mcrypt \
 
@@ -55,7 +55,7 @@ RUN apt-get update \
     && docker-php-ext-install simplexml \
     && docker-php-ext-enable simplexml \
 
-    && apt-get install -y --no-install-recommends libxml2-dev \
+    && apt-get install --yes --no-install-recommends libxml2-dev \
     && docker-php-ext-install soap \
     && docker-php-ext-enable soap \
 
@@ -65,11 +65,11 @@ RUN apt-get update \
     && docker-php-ext-install xml \
     && docker-php-ext-enable xml \
 
-    && apt-get install -y --no-install-recommends libxslt1-dev \
+    && apt-get install --yes --no-install-recommends libxslt1-dev \
     && docker-php-ext-install xsl \
     && docker-php-ext-enable xsl \
 
-    && apt-get install -y --no-install-recommends zlib1g-dev \
+    && apt-get install --yes --no-install-recommends zlib1g-dev \
     && docker-php-ext-install zip \
     && docker-php-ext-enable zip \
 
@@ -79,11 +79,11 @@ RUN apt-get update \
     && docker-php-ext-install pcntl \
     && docker-php-ext-enable pcntl \
 
-    && apt-get install -y --no-install-recommends libldap2-dev \
+    && apt-get install --yes --no-install-recommends libldap2-dev \
     && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
     && docker-php-ext-install ldap \
 
-    && apt-get clean && apt-get autoclean && apt-get autoremove --purge -y
+    && apt-get clean && apt-get autoclean && apt-get autoremove --purge --yes
 
 COPY ./apache/docker-php7.conf /etc/apache2/conf-available/
 

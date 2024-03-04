@@ -2,32 +2,32 @@ FROM php:7.4-apache
 
 RUN apt-get update \
 
-    && apt-get install -y --no-install-recommends nano mc wget openssl git sshpass cron supervisor sendmail unzip p7zip-full dnsutils iproute2 \
+    && apt-get install --yes --no-install-recommends nano mc wget openssl git sshpass cron supervisor sendmail unzip p7zip-full dnsutils iproute2 \
 
     && docker-php-ext-install bcmath \
     && docker-php-ext-enable bcmath \
 
-    && apt-get install -y --no-install-recommends libpng-dev libjpeg-dev libwebp-dev libfreetype6-dev libgd-dev \
+    && apt-get install --yes --no-install-recommends libpng-dev libjpeg-dev libwebp-dev libfreetype6-dev libgd-dev \
     && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ --with-webp=/usr/include/ \
     && docker-php-ext-install gd \
     && docker-php-ext-enable gd \
 
-    && apt-get install -y --no-install-recommends libmagickwand-dev \
+    && apt-get install --yes --no-install-recommends libmagickwand-dev \
     && pecl install imagick \
     && docker-php-ext-enable imagick \
 
-    && apt-get install -y --no-install-recommends libxml2-dev \
+    && apt-get install --yes --no-install-recommends libxml2-dev \
     && docker-php-ext-install soap \
     && docker-php-ext-enable soap \
 
     && docker-php-ext-install sockets \
     && docker-php-ext-enable sockets \
 
-    && apt-get install -y --no-install-recommends libxslt1-dev \
+    && apt-get install --yes --no-install-recommends libxslt1-dev \
     && docker-php-ext-install xsl \
     && docker-php-ext-enable xsl \
 
-    && apt-get install -y --no-install-recommends libzip-dev zlib1g-dev \
+    && apt-get install --yes --no-install-recommends libzip-dev zlib1g-dev \
     && docker-php-ext-install zip \
     && docker-php-ext-enable zip \
 
@@ -40,16 +40,16 @@ RUN apt-get update \
     && docker-php-ext-install exif \
     && docker-php-ext-enable exif \
 
-    && apt-get install -y --no-install-recommends libldap2-dev \
+    && apt-get install --yes --no-install-recommends libldap2-dev \
     && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
     && docker-php-ext-install ldap \
     && docker-php-ext-enable ldap \
 
-    && apt-get install -y --no-install-recommends openssl libssl-dev libcurl4-openssl-dev \
+    && apt-get install --yes --no-install-recommends openssl libssl-dev libcurl4-openssl-dev \
     && pecl install mongodb \
     && docker-php-ext-enable mongodb \
 
-    && apt-get install -y --no-install-recommends default-mysql-client \
+    && apt-get install --yes --no-install-recommends default-mysql-client \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-enable pdo_mysql \
 
@@ -60,12 +60,12 @@ RUN apt-get update \
     && ./configure --prefix=/opt/icu691 && make && make install \
     && rm -rf /opt/tmp \
 
-    && apt-get install -y --no-install-recommends libicu67 libicu-dev \
+    && apt-get install --yes --no-install-recommends libicu67 libicu-dev \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl \
     && docker-php-ext-enable intl \
 
-    && apt-get clean && apt-get autoclean && apt-get autoremove --purge -y
+    && apt-get clean && apt-get autoclean && apt-get autoremove --purge --yes
 
 COPY ./apache/docker-php7.conf /etc/apache2/conf-available/
 
