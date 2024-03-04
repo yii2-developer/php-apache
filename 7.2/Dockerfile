@@ -79,7 +79,7 @@ RUN apt-get update \
     && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
     && docker-php-ext-install ldap \
 
-    && apt-get clean && apt-get autoclean && apt-get autoremove --purge -y
+    && apt-get clean && apt-get autoclean && apt-get autoremove --purge --yes
 
 COPY ./apache/docker-php7.conf /etc/apache2/conf-available/
 
